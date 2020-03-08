@@ -1,0 +1,5 @@
+D:\Repositorios\possibleService\PossibleService\PossibleService\bin\PossibleService.dll.config
+D:\Repositorios\possibleService\PossibleService\PossibleService\bin\PossibleService.dll
+D:\Repositorios\possibleService\PossibleService\PossibleService\bin\PossibleService.pdb
+D:\Repositorios\possibleService\PossibleService\PossibleService\obj\Debug\PossibleService.dll
+D:\Repositorios\possibleService\PossibleService\PossibleService\obj\Debug\PossibleService.pdb
