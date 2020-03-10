@@ -96,6 +96,42 @@ namespace PossibleService
             return newAssignment;
         }
 
+        public List<Assignment> GetAssignmentsByItem(List<Item> itens)
+        {
+            List<Assignment> listReturn = new List<Assignment>();
+            if (Assignments == null)
+                return null;
+            else
+            {
+                foreach(Item item in itens)
+                {
+                    listReturn.AddRange(Assignments.FindAll(assi => assi.ItemID == item.ItemID));
+                }
+                return listReturn;
+            }
+               
+        }
+
+        public void RemoveItem(string itemID)
+        {
+            if (Assignments != null)
+            { 
+                Assignments.RemoveAll(assi => assi.ItemID == Convert.ToInt32(itemID));
+                if (Itens != null)
+                    Itens.RemoveAll(it => it.ItemID == Convert.ToInt32(itemID));
+               
+            }
+        }
+
+        public void RemoveAssignment(string assignmentID)
+        {
+            if (Assignments != null)            
+                Assignments.RemoveAll(assi => assi.AssignmentID == Convert.ToInt32(assignmentID));
+               
+
+            
+        }
+
         public class ListObject : List<Assignment>
         {
             public List<Assignment> Assignments { get; set; }

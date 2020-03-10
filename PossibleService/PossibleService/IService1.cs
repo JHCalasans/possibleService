@@ -50,6 +50,21 @@ namespace PossibleService
           ResponseFormat = WebMessageFormat.Json)]
         Assignment SaveAssignment(Assignment assignment);
 
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/GetAssignmentsByItem", RequestFormat = WebMessageFormat.Json,
+         ResponseFormat = WebMessageFormat.Json)]
+        List<Assignment> GetAssignmentsByItem(List<Item> itens);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/RemoveItem/{itemID}", RequestFormat = WebMessageFormat.Json,
+         ResponseFormat = WebMessageFormat.Json)]
+        void RemoveItem(string itemID);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/RemoveAssignment/{assignmentID}", RequestFormat = WebMessageFormat.Json,
+         ResponseFormat = WebMessageFormat.Json)]
+        void RemoveAssignment(string assignmentID);
+
 
     }
 
