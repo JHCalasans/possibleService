@@ -11,6 +11,7 @@ namespace PossibleService.Contracts
     {
         String _name;
         String _password;
+        int _userID;
 
         [DataMember]
         public String Name
@@ -25,5 +26,25 @@ namespace PossibleService.Contracts
             get { return _password; }
             set { _password = value; }
         }
+
+        [DataMember]
+        public int UserID 
+        {
+            get { return _userID; }
+            set { _userID = value; }
+        }
+
+        public User(User user)
+        {
+            UserIndex++;
+            UserID = UserIndex;
+            Password = user.Password;
+            Name = user.Name;
+            
+        }
+
+        public static int UserIndex { get; set; }
+
+        
     }
 }

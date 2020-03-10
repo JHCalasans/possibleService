@@ -18,10 +18,13 @@ namespace PossibleService
         string GetData(int value);
 
         [OperationContract]
+        string GetDatas();
+
+        [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         [OperationContract]
-        User GetUsers();
+        User SaveUser(User user);
         //User GetUsers();
 
         // TODO: Adicione suas operações de serviço aqui

@@ -13,12 +13,14 @@ namespace PossibleService
     // OBSERVAÇÃO: Para iniciar o cliente de teste do WCF para testar esse serviço, selecione Service1.svc ou Service1.svc.cs no Gerenciador de Soluções e inicie a depuração.
     public class Service1 : IService1
     {
+
+        private static List<User> Users { get; set; }
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);
         }
 
-        public string GetData()
+        public string GetDatas()
         {
             return string.Format("You entered rompt");
         }
@@ -38,8 +40,17 @@ namespace PossibleService
 
         public User GetUsers()
         {
-            User user = new User() { Name = "João", Password = "teste" };
-            return user;
+           // User user = new User() { Name = "João", Password = "teste" };
+            return null;
+        }
+        public  User SaveUser(User user)
+        {
+            User newUser = new User(user);
+            if (Users == null)
+                Users = new List<User>();
+
+            Users.Add(newUser);
+            return newUser;
         }
     }
 }
