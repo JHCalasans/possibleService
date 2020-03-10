@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using static PossibleService.Service1;
 
 namespace PossibleService
 {
@@ -14,20 +15,42 @@ namespace PossibleService
     public interface IService1
     {
 
-        [OperationContract]
-        string GetData(int value);
+        //[OperationContract]
+        //[WebInvoke(Method = "GET",UriTemplate = "/GetDatas", RequestFormat =WebMessageFormat.Json,
+        //    ResponseFormat =WebMessageFormat.Json,BodyStyle =WebMessageBodyStyle.Wrapped)]
+        //string GetDatas();
 
         [OperationContract]
-        string GetDatas();
-
-        [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
-
-        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/SaveUser", RequestFormat = WebMessageFormat.Json,
+            ResponseFormat = WebMessageFormat.Json)]
         User SaveUser(User user);
-        //User GetUsers();
 
-        // TODO: Adicione suas operações de serviço aqui
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/Login", RequestFormat = WebMessageFormat.Json,
+           ResponseFormat = WebMessageFormat.Json)]
+        User Login(User user);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/SaveItem", RequestFormat = WebMessageFormat.Json,
+           ResponseFormat = WebMessageFormat.Json)]
+        Item SaveItem(Item item);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/GetAssignmentsByUser/{userID}", RequestFormat = WebMessageFormat.Json,
+         ResponseFormat = WebMessageFormat.Json)]
+        List<ListObject> GetAssignmentsByUser(string userID);
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", UriTemplate = "/GetItensByUser/{userID}", RequestFormat = WebMessageFormat.Json,
+       ResponseFormat = WebMessageFormat.Json)]
+        List<Item> GetItensByUser(string userID);
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", UriTemplate = "/SaveAssignment", RequestFormat = WebMessageFormat.Json,
+          ResponseFormat = WebMessageFormat.Json)]
+        Assignment SaveAssignment(Assignment assignment);
+
+
     }
 
 

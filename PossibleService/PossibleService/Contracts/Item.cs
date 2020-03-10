@@ -2,7 +2,7 @@
 
 using System.Runtime.Serialization;
 
-namespace Possible.Models
+namespace PossibleService.Contracts
 {
     [DataContract]
     public class Item

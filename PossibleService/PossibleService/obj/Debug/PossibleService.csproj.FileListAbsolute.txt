@@ -3,3 +3,8 @@ D:\Repositorios\possibleService\PossibleService\PossibleService\bin\PossibleServ
 D:\Repositorios\possibleService\PossibleService\PossibleService\bin\PossibleService.pdb
 D:\Repositorios\possibleService\PossibleService\PossibleService\obj\Debug\PossibleService.dll
 D:\Repositorios\possibleService\PossibleService\PossibleService\obj\Debug\PossibleService.pdb
+C:\Users\17254\source\repos\possibleService\PossibleService\PossibleService\bin\PossibleService.dll.config
+C:\Users\17254\source\repos\possibleService\PossibleService\PossibleService\bin\PossibleService.dll
+C:\Users\17254\source\repos\possibleService\PossibleService\PossibleService\bin\PossibleService.pdb
+C:\Users\17254\source\repos\possibleService\PossibleService\PossibleService\obj\Debug\PossibleService.dll
+C:\Users\17254\source\repos\possibleService\PossibleService\PossibleService\obj\Debug\PossibleService.pdb

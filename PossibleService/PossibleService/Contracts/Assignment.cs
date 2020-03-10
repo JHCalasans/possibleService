@@ -2,7 +2,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace PossibleService.Models
+namespace PossibleService.Contracts
 {
     [DataContract]
     public class Assignment
@@ -10,9 +10,9 @@ namespace PossibleService.Models
 
         int _assignmentID;
         string _title;
-        DateTime _date;
         String _color;
         int _itemID;
+        String _dateString;
 
         [DataMember]
         public int AssignmentID 
@@ -27,12 +27,7 @@ namespace PossibleService.Models
             get { return _title; }
             set { _title = value; }
         }
-        [DataMember]
-        public DateTime Date
-        {
-            get { return _date; }
-            set { _date = value; }
-        }
+
 
         [DataMember]
         public String Color
@@ -48,9 +43,11 @@ namespace PossibleService.Models
             set { _itemID = value; }
         }
 
-        public String DateString 
-        { 
-            get { return Date.ToString("MM/dd/yyyy"); }
+        [DataMember]
+        public String DateString
+        {
+            get { return _dateString; }
+            set { _dateString = value; }
         }
 
         public Assignment(Assignment assignment)
@@ -58,9 +55,9 @@ namespace PossibleService.Models
             AssignmentIndex++;
             AssignmentID = AssignmentIndex;
             Title = assignment.Title;
-            Date = assignment.Date;
             Color = assignment.Color;
             ItemID = assignment.ItemID;
+            DateString = assignment.DateString;
 
         }
 

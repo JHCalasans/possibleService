@@ -15,35 +15,19 @@ namespace PossibleService
     {
 
         private static List<User> Users { get; set; }
-        public string GetData(int value)
-        {
-            return string.Format("You entered: {0}", value);
-        }
+        private static List<Item> Itens { get; set; }
+        private static List<Assignment> Assignments { get; set; }
 
-        public string GetDatas()
+        public User Login(User user)
         {
-            return string.Format("You entered rompt");
-        }
-
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-        {
-            if (composite == null)
+            if (Users != null)
             {
-                throw new ArgumentNullException("composite");
+                return Users.Find(usr => usr.Name.Equals(user.Name) && usr.Password.Equals(user.Password));
             }
-            if (composite.BoolValue)
-            {
-                composite.StringValue += "Suffix";
-            }
-            return composite;
+            else
+                return null;
         }
-
-        public User GetUsers()
-        {
-           // User user = new User() { Name = "João", Password = "teste" };
-            return null;
-        }
-        public  User SaveUser(User user)
+        public User SaveUser(User user)
         {
             User newUser = new User(user);
             if (Users == null)
@@ -51,6 +35,76 @@ namespace PossibleService
 
             Users.Add(newUser);
             return newUser;
+        }
+
+        public Item SaveItem(Item item)
+        {
+            Item newItem = new Item(item);
+            if (Itens == null)
+                Itens = new List<Item>();
+
+            Itens.Add(newItem);
+            return newItem;
+        }
+
+        public List<ListObject> GetAssignmentsByUser(string userID)
+        {
+            if (Itens == null)
+                return null;
+            else
+            {
+                List<Item> newItens = Itens.FindAll(it => it.UserID == Int32.Parse(userID));
+                List<ListObject> ListReturn = new List<ListObject>();
+                ListObject obj;
+                if (newItens != null && newItens.Count > 0)
+                {
+                    foreach (Item element in newItens)
+                    {
+                        obj = new ListObject() { ItemDescription = element.Description, ItemID = element.ItemID };
+                        if (Assignments != null)
+                        {
+                            List<Assignment> ListAssignments = Assignments.FindAll(assi => assi.ItemID == element.ItemID);
+                            foreach (Assignment assi in ListAssignments)
+                            {
+                                obj.Add(assi);
+                            }
+                        }
+                        ListReturn.Add(obj);
+                    }
+                }
+                return ListReturn;
+            }
+        }
+
+        public List<Item> GetItensByUser(string userID)
+        {
+
+            if (Itens == null)
+                return null;
+            else
+                return Itens.FindAll(it => it.UserID == Int32.Parse(userID));
+
+        }
+
+        public Assignment SaveAssignment(Assignment assignment)
+        {
+            Assignment newAssignment = new Assignment(assignment);
+            if (Assignments == null)
+                Assignments = new List<Assignment>();
+
+            Assignments.Add(newAssignment);
+            return newAssignment;
+        }
+
+        public class ListObject : List<Assignment>
+        {
+            public List<Assignment> Assignments { get; set; }
+
+            public String ItemDescription { get; set; }
+
+            public int ItemID { get; set; }
+
+
         }
     }
 }
